@@ -1,6 +1,8 @@
 let numberOne = 0;
 let numberTwo = 0;
+let answer = 0;
 let operator = "";
+
 
 function setNumber(x){
     if (operator == ""){
@@ -9,6 +11,8 @@ function setNumber(x){
         } else {
             numberOne = "" + numberOne + x;
         }
+        document.getElementById("output").innerHTML = numberOne;
+        console.log(numberOne);
     }
     else {
         if (numberTwo == 0){
@@ -16,9 +20,10 @@ function setNumber(x){
         } else {
             numberTwo = "" + numberTwo + x;
         }
-    }
-    console.log(numberOne);
     console.log(numberTwo);
+    document.getElementById("output").innerHTML = numberTwo;
+    }
+    
 }
 
 function equals(x, y, z){
@@ -26,43 +31,36 @@ function equals(x, y, z){
     numberTwo = 0;
     operator = "";
     if (y == "+"){
-        return +x + +z;
+        answer = +x + +z;
     }
     if (y == "-"){
-        return +x - +z;
+        answer = +x - +z;
     }
     if (y == "*"){
-        return +x * +z;
+        answer = +x * +z;
     }
     if (y == "/"){
-        return +x / +z;
+        answer = +x / +z;
     }
     if (y == "^"){
-        return Math.pow(x, z);
+        answer = Math.pow(x, z);
     }
     if (y == "√a"){
-        return Math.pow(x, 1/z);
+        answer = Math.pow(x, 1/z);
     }
+    if (y == "!"){
+        answer = 1;
+        for (i = x; i > 1; i-1){
+            answer = answer * i;
+        }
+    }
+    console.log(answer);
+    document.getElementById("output").innerHTML = answer;
+    
 }
 
 function setOperator(y){
-    if (y == "+"){
-        operator = "+";
-    }
-    if (y == "-"){
-        operator = "-";
-    }
-    if (y == "*"){
-        operator = "*";
-    }
-    if (y == "/"){
-        operator = "/";
-    }
-    if (y == "^"){
-        operator = "^";
-    }
-    if (y == "√a"){
-        operator = "√a";
-    }
+    operator = y;
     console.log(operator);
+    document.getElementById("output").innerHTML = operator;
 }
